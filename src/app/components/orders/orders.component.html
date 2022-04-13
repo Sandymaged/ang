@@ -1,0 +1,9 @@
+<label for="cat">Choose a categories:</label>
+<select [(ngModel)]="sele">
+  <option value="0">All</option>
+  <option *ngFor="let cat of cats" [value]="cat.ID">{{cat.Name}}</option>
+</select>
+<div class="bg-warning">
+  <app-products [recived]="sele" (totalpricechange)="ontotalpricechange($event)"></app-products>
+</div>
+ORDER TOTAL PRICE: {{receviedtotalprice}}

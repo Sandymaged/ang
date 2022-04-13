@@ -1,0 +1,43 @@
+<img src="assets/Capture1.PNG" style="width: 150PX; height: 150PX;">
+
+<h1>
+  Store Name:{{store1.name}}
+<img [src]="store1.logo" ></h1>
+
+ <h3>Store Branches:</h3>
+  <ul>
+    <li *ngFor="let loc of store1.branches">
+      {{loc}}
+    </li>
+  </ul>
+
+  <div *ngIf="!divv">
+thank u {{ClientName}}
+  </div>
+  <div *ngIf="divv">
+
+<br>
+<input type="text" [(ngModel)]="ClientName">
+<p>hello{{ClientName}}</p>
+</div>
+<button class="btn btn-primary" (click)="togglediv()">BUY</button><br>
+
+
+
+
+
+<!--  <td>
+        <ng-container *ngIf="pro.quantity>0 else outofstock"> {{pro.quantity}}</ng-container>
+      <ng-template #outofstock>Out of stock</ng-template>
+      </td>
+     <td>
+        <ng-container [ngSwitch]="pro.quantity">
+      <ng-container *ngSwitchCase="0">Out of stock</ng-container>
+      <ng-container *ngSwitchCase="1">Last Item!</ng-container>
+      <ng-container *ngSwitchCase="2">Last tow item!</ng-container>
+      <ng-container *ngSwitchDefault>{{pro.quantity}}</ng-container>
+</ng-container>
+      </td>-->
+
+      <!-- [ngStyle]="'background-color':(pro.quantity==1)?'yellow':'grey'"  [class.bg-warning]="pro.quantity==0  bysht8l 3la tr-->
+<!-- [ngClass]="'bg-warning':'pro.quantity==0','text-danger':'pro.quantity==0'"     [class.bg-warning]="pro.quantity==0  bysht8l 3la tr-->

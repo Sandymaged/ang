@@ -1,0 +1,43 @@
+<h3>Products</h3>
+<a class="btn btn-success m-2" href="#" role="button" [routerLink]="['/NewProduct']">Add Product</a>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Quantity</th>
+        <th scope="col">Price in USD</th>
+        <th scope="col">Price in EGP</th>
+        <th scope="col">Dtails</th>
+      <th scope="col">Image</th>
+      <th scope="col">Item Count</th>
+      <th scope="col">Buy</th>
+    </tr>
+  </thead>
+<tbody>
+<ng-container *ngFor="let pro of prolist" >
+      <tr [hidden]="pro.quantity==0" [ngClass]="{'bg-info':pro.quantity==1,'bg-white':pro.quantity>1}">
+      <!-- [ngClass]="{'bg-warning':pro.quantity==1,'bg-light':pro.quantity>1}"-->
+      <td > {{pro.id}}</td>
+      <td>{{pro.name}}</td>
+      <td>
+        <ng-container [ngSwitch]="pro.quantity">
+          <ng-container *ngSwitchCase="0">Out of stock</ng-container>
+          <ng-container *ngSwitchCase="1">Last Item!</ng-container>
+          <ng-container *ngSwitchCase="2">Last 2 items!</ng-container>
+          <ng-container *ngSwitchDefault>{{pro.quantity}}</ng-container>
+        </ng-container>
+      </td>
+      <td>{{pro.price | currency: 'USD': 'symbol'}}</td>
+      <td>{{pro.price | currency: 'EGP'}}</td>
+      <td><button type="button" class="btn btn-success" (click)="details(pro.id)">Details</button></td>
+      <!--<a class="btn btn-success" role="button" [routerLink]="['/Product',pro.id]>Dtails</a>">
+        mn8er fun byb2a button 3la he2t link-->
+      <td> <img [src]="pro.img" appProductCard></td>
+      <td><input #itemcount type="number" class="form-control"></td>
+     <td> <button type="button " class=" btn btn-info " [routerLink]="['/Edit',pro.id]">Edit</button></td>
+      <td><button type="button" class="btn btn-success" (click)="updatetotalprice(pro.price,itemcount.value)">ADD TO CARD</button></td>
+    </tr>
+  </ng-container>
+  </tbody>
+</table>

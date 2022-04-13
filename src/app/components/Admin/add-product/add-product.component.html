@@ -1,0 +1,40 @@
+<form #submitform="ngForm" (ngSubmit)="Insertpro()">
+<div class="col-5 g-3 align-items-center">
+  <div class="col-auto">
+    <label class="col-form-label">Name:</label>
+  </div>
+  <div class="col-auto">
+    <!--yshofha anha input msh element references-->
+    <input type="text" #proname="ngModel" [(ngModel)]="prd.name" class="form-control" name="namme" required pattern="[A-Za-z]{3,15}">
+  <div class="alert alert-warning" [hidden]="proname.valid || proname.untouched">
+     <small *ngIf="proname.errors?.['required']">Product name is required</small>
+     <small *ngIf="proname.errors?.['pattern']">Product name must be at least 3 letters</small>
+
+  </div>
+  </div>
+<br>
+  <div class="col-auto">
+    <label class="col-form-label">Category Id:</label>
+  </div>
+  <div class="col-auto">
+<select class="form-control" name="category" [(ngModel)]="prd.cateogryid" required>
+  <option *ngFor="let cat of cats" [value]="cat.ID">{{cat.Name}}</option>
+</select>
+  </div>
+  <br>
+  <div class="col-auto">
+    <label class="col-form-label">Price:</label>
+  </div>
+  <div class="col-auto">
+    <input type="number" [(ngModel)]="prd.price" class="form-control" name="price" required>
+  </div>
+  <br>
+  <div class="col-auto">
+    <label class="col-form-label">Quantity:</label>
+  </div>
+  <div class="col-auto">
+    <input type="number" [(ngModel)]="prd.quantity" class="form-control" name="quantity" required>
+  </div><br>
+  <button [disabled]="submitform.invalid" class="btn btn-success" type="submit">Insert</button>
+</div>
+</form>

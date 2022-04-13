@@ -1,0 +1,23 @@
+<div class="card" style="width: 15rem;">
+  <img [src]="prd?.img" class="card-img-top" alt="">
+  <div class="card-body">
+    <h5 class="card-title">{{prd?.name |uppercase}}</h5>
+    <div class="card-text">
+<h5> Price: {{prd?.price}}</h5>
+<h5> Quantity: {{prd?.quantity}}</h5>
+
+    </div>
+<button class="btn btn-secondary" [disabled]="currentid==prdarrayid[0]" (click)="pervious()">Pervious</button>
+<button class="btn btn-primary" (click)="goback()">Back</button>
+<button class="btn btn-success" [disabled]="currentid==prdarrayid[prdarrayid.length-1]" (click)="next()">Next</button>
+
+  </div>
+</div>
+<hr>
+<div class="mb-3">
+  <label for="" class="form-label">Search</label>
+  <input type="text" #prdname
+    class="form-control" name="pro" id="pro" placeholder="">
+    <button class="btn btn-secondary" (click)="search(prdname.value)">Search</button>
+
+</div>
